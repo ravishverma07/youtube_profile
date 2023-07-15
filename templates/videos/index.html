@@ -1,0 +1,31 @@
+{% include 'base.html' %}
+
+    <style>
+        .video-container {
+            border-radius: 10%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .video-item {
+            width: 30%;
+            margin-bottom: 20px;
+        }
+    </style>
+    <h1 style="color: whitesmoke; text-align: center; background-color: rgb(23, 22, 22);"> All Videos</h1>
+    <div class="video-container" style="margin: 3%;">
+        {% for video in videos %}
+        <div class="video-item">
+            <iframe style="border-radius: 10%;" width="400" height="300"
+                src="https://www.youtube.com/embed/{{ video.video_id }}" frameborder="0"
+                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <h5 style="color:white;">{{ video.title }}</h5>
+            <p>{{ video.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {%include 'pagination.html' %}
+</body>
+
+</html>

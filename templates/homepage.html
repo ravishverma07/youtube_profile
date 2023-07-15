@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<div style="background-color: rgb(56, 53, 53); width: 100%; height: 100%;">
+  <img src="{% static '/images/ravish.jpg' %}" style="border-radius: 30%; display: block; margin: auto;">
+  <h1 style="color: white; text-align: center;">Welcome To Tech With Rav</h1>
+  <h3 style="text-align: center; color: white;">Hi, I am Ravish Verma <br>
+    I am a Youtuber. I am passionate about learning and spreading my knowledge, so I plan to make a youtube
+    channel. I have always been interested in how people think and interact with the world. Making videos is the
+    perfect field to explore these interests further.
+  </h3>
+</div>
+
+<style>
+  .video-container {
+    border-radius: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .video-item {
+    width: 30%;
+    margin-bottom: 20px;
+  }
+
+  .pagination li.page-item {
+    margin-right: 5px;
+  }
+
+  .pagination li.page-item a.page-link {
+    color: white;
+    background-color: black;
+    border-color: black;
+  }
+</style>
+
+<h1 style="color: whitesmoke; text-align: center; background-color: rgb(24, 23, 23);">All Videos</h1>
+<div class="video-container" style="margin: 3%;">
+  {% for video in videos %}
+  <div class="video-item">
+    <iframe style="border-radius: 10%;" width="400" height="300"
+      src="https://www.youtube.com/embed/{{ video.video_id }}" frameborder="0" allow="autoplay; encrypted-media"
+      allowfullscreen></iframe>
+    <h5 style="color: white;">{{ video.title }}</h5>
+    <p>{{ video.description }}</p>
+  </div>
+  {% endfor %}
+</div>
+
+{%include 'pagination.html'%}
+
+{% endblock %}
